@@ -1,13 +1,14 @@
-body {
-  background-color: blue;
-  background-clip: text;
-  color: red;
-  font-size: 5em;
-  text-align: center;
-  .test {
-    color: black;
-  }
-  img {
-    width: 90%;
-  }
-}
+// Config
+@import "config/reset";
+@import "config/font-face";
+@import "config/variables";
+@import "config/mixins";
+@import "config/global";
+
+// Layouts
+@import "layouts/homepage";
+
+// Components
+@import "components/background";
+@import "components/greeting";
+@import "components/quote";
