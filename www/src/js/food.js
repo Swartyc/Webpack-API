@@ -1,12 +1,4 @@
 import $ from "jquery";
-/*
- * Objectif : récupérer une citation aléatoire à partir d'une API et l'afficher
- *
- * Étapes :
- * 1- Créer une référence vers les éléments du DOM qu'on va utiliser
- * 2- Récupérer une citation aléatoire à partir de l'API de QuotesOnDesign (https://quotesondesign.com/api/)
- * 3- Afficher la citation
- * */
 
 export class Food {
   constructor() {
@@ -18,12 +10,16 @@ export class Food {
     // Éléments non-jQuery
     this.els = {
       Legend: document.querySelector(".food_legend"),
+      Image: document.querySelector(".food_image"),
+      Link: document.querySelector(".food_link"),
       Container: document.querySelector("js-container"),
     };
 
     // Éléments jQuery
     this.$els = {
       Legend: $(".food_legend"),
+      Image: document.querySelector(".food_image"),
+      Link: document.querySelector(".food_link"),
       Container: $(".js-container"),
     };
 
@@ -45,7 +41,7 @@ export class Food {
     $.ajaxSetup({ cache: false });
     $.getJSON(api.endpoint)
       .then((response) => {
-        console.log(response["results"][1]["title"]);
+        console.log(response["results"][0]["title"]);
         this.renderFood(response);
       })
       .catch((e) => {
@@ -54,7 +50,14 @@ export class Food {
   }
   renderFood(food) {
     const foodLegend = food.results[0].title;
+    const foodimgsrc = food.results[0].image;
+    const foodimgalt = food.results[0].title + "_image";
+    const foodlink = "details?id=" + food.results[0].id;
+    console.log(foodlink);
     this.$els.Legend.text(foodLegend);
+    this.$els.Image.setAttribute("src", foodimgsrc);
+    this.$els.Image.setAttribute("alt", foodimgalt);
+    this.$els.Link.setAttribute("href", foodlink);
     this.$els.Container.addClass("is-ready");
   }
 }

@@ -22,15 +22,15 @@
       Find recipe ideas
     </h1>
     <form
-      action="{{route('food.search')}}"
+      action="food-search"
       class="flex justify-center flex-wrap py-16 test-xl gap-16"
-      method="post"
+      method="get"
     >
       <input
         class="border-4 border-green-600 rounded-lg bg-green-500 placeholder-green-900 px-4 py-1 hover:cursor-text"
         name="word"
         type="text"
-        placeholder="Pasta"
+        value="Pasta"
       />
       <div
         class="border-2 border-green-600 rounded-lg bg-green-500 px-4 py-1 mx-8 text-green-900"
@@ -42,7 +42,7 @@
           name="number_choose"
           id="search-bar"
         >
-          <option value="5">5</option>
+          <option value="5" selected>5</option>
           <option value="10">10</option>
           <option value="20">20</option>
           <option value="50">50</option>
@@ -54,11 +54,6 @@
         type="submit"
       />
     </form>
-    <!--<?php 
-    if (empty($_POST['number_choose'])) {
-        $_POST['number_choose'] = 5;
-    }
-    ?>-->
     <script type="text/javascript">
       document.getElementById("search-bar").value =
         "<?php echo $_POST['number_choose'];?>";
@@ -69,17 +64,14 @@
 
         @for ($i = 0; $i < $numbers; $i++)
         <?php $id_details=$food["results"][$i]["id"]; ?>-->
-      <!--<a
-        class="max-imag text-center p-1 border-4 border-green-600 transition-all rounded-lg hover:shadow-lg hover:shadow-green-600 overflow-hidden hover:scale-105"
-        href="{{route('food.details',[$id_details])}}"
+      <a
+        class="food_link max-imag text-center p-1 border-4 border-green-600 transition-all rounded-lg hover:shadow-lg hover:shadow-green-600 overflow-hidden hover:scale-105"
+        href="details.html"
       >
-        <img
-          src='{{$food["results"][$i]["image"]}}'
-          alt='{{$food["results"][$i]["title"]}}_image'
-        />-->
-      <legend class="food_legend"></legend>
-      <!--</a>
-      @endfor-->
+        <img class="food_image" src="./images/Blackground.png" alt="t" />
+        <legend class="food_legend"></legend>
+      </a>
+      <!--@endfor-->
     </div>
   </body>
 </html>
