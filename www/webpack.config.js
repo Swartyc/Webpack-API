@@ -38,8 +38,13 @@ config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      inject: "body",
       template: "./src/index.html",
       filename: "index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/details.html",
+      filename: "details.html",
     }),
     new ESLintPlugin({
       context: path.resolve(__dirname, "src"),

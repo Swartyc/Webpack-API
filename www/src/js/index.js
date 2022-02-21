@@ -1,5 +1,6 @@
 import "../css/app.scss";
 import { Food } from "./food";
+import { Foodetails } from "./foodetails";
 
 class App {
   constructor() {
@@ -9,6 +10,7 @@ class App {
   initApp() {
     // Start application
     new Food();
+    new Foodetails();
   }
 }
 
