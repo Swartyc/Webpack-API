@@ -1,7 +1,5 @@
 import "../css/app.scss";
-import { Background } from "./background";
-import { Quote } from "./quote";
-import { Greeting } from "./greeting";
+import { Food } from "./food";
 
 class App {
   constructor() {
@@ -10,9 +8,7 @@ class App {
 
   initApp() {
     // Start application
-    new Background();
-    new Quote();
-    new Greeting();
+    new Food();
   }
 }
 
