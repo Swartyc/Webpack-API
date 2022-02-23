@@ -41,10 +41,18 @@ config = {
       inject: "body",
       template: "./src/index.html",
       filename: "index.html",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./src/details.html",
       filename: "details.html",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+      },
     }),
     new ESLintPlugin({
       context: path.resolve(__dirname, "src"),

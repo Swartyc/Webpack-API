@@ -52,7 +52,7 @@ export class Food {
     const foodLegend = food.results[0].title;
     const foodimgsrc = food.results[0].image;
     const foodimgalt = food.results[0].title + "_image";
-    const foodlink = "details?id=" + food.results[0].id;
+    const foodlink = "details.html?id=" + food.results[0].id;
     console.log(foodlink);
     this.$els.Legend.text(foodLegend);
     this.$els.Image.setAttribute("src", foodimgsrc);
