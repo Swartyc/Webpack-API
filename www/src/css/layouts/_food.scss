@@ -1,0 +1,83 @@
+.homepage {
+  h1 {
+    padding: 1rem 0;
+    font-size: 3.75rem;
+    font-weight: bold;
+    text-align: center;
+    color: $color-800;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 4rem 0;
+    font-size: 1.25rem;
+    gap: 4rem;
+    input[type="text"] {
+      border: 4px solid $color-600;
+      border-radius: 0.5rem;
+      background-color: $color-500;
+      padding: 0.25rem 1rem;
+      cursor: text;
+      &::placeholder {
+        color: $color-900;
+      }
+    }
+    .selection {
+      border: 2px solid $color-600;
+      border-radius: 0.5rem;
+      background-color: $color-500;
+      padding: 0.25rem 1rem;
+      color: $color-900;
+      .number_select {
+        border: 2px solid $color-400;
+        background-color: $color-500;
+        cursor: cell;
+        color: $color-900;
+        option {
+          background-color: $color-500;
+          border: none;
+        }
+      }
+    }
+    input[type="submit"] {
+      border: 2px solid $color-600;
+      border-radius: 0.5rem;
+      background-color: $color-500;
+      padding: 0.25rem 1rem;
+      cursor: pointer;
+      color: $color-900;
+    }
+  }
+  .screen_choice {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 230px);
+    grid-gap: 32px;
+    padding-top: 64px;
+    padding: 0 3rem;
+    justify-content: center;
+    .food_link {
+      text-decoration: none;
+      max-width: 230px;
+      text-align: center;
+      padding: 0.25rem;
+      border: 4px solid $color-600;
+      border-radius: 0.5rem;
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 200ms;
+      overflow: hidden;
+      &:hover {
+        box-shadow: 0 10px 15px -3px $color-600, 0 4px 6px -4px $color-600;
+        transform: scale(1.05);
+      }
+      .food_image {
+        max-width: 100%;
+        height: auto;
+      }
+      .food_legend {
+        color: black;
+      }
+    }
+  }
+}

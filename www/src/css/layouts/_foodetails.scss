@@ -1,0 +1,103 @@
+.detailsfood {
+  .returnfood {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 4rem;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+    &:hover {
+      animation: none;
+    }
+  }
+  .title_details {
+    padding: 1rem 0;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: $color-800;
+  }
+  h2 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: bold;
+    padding: 0 3rem;
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+    color: $color-700;
+  }
+  .sum_details {
+    padding: 0 3rem;
+    text-align: justify;
+    cursor: pointer;
+    color: $color-600;
+  }
+  .ingredientfood {
+    table {
+      border: 4px solid $color-800;
+      margin: 4rem auto;
+      tr {
+        th,
+        td {
+          border: 4px solid $color-800;
+          vertical-align: middle;
+        }
+        th {
+          text-transform: uppercase;
+          font-size: 1.5rem;
+          line-height: 2rem;
+          font-weight: bold;
+          color: $color-700;
+        }
+        td {
+          padding: 0.5rem;
+          color: $color-600;
+          text-transform: capitalize;
+          &.subtitle {
+            padding: 0;
+            text-align: center;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: bold;
+            color: $color-700;
+          }
+          &.measurement {
+            padding: 0;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-weight: bold;
+            color: $color-700;
+          }
+        }
+      }
+    }
+  }
+  .equipmentfood {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4rem;
+    .equipmentimg_details {
+      margin: auto;
+    }
+  }
+  ol {
+    list-style-type: decimal;
+    padding: 4rem;
+    li {
+      padding: 0.5rem;
+      color: $color-600;
+    }
+  }
+}
