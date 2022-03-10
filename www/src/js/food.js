@@ -33,7 +33,7 @@ export class Food {
   getFood() {
     const api = {
       endpoint:
-        "https://api.spoonacular.com/recipes/complexSearch?number=5&query=pasta&apiKey=55f4f7870c864602936c39f8a7e3fafc",
+        "https://api.spoonacular.com/recipes/complexSearch?number=5&query=pasta&apiKey=4ab5c3e49cb746eb8dd35673e691d303",
       params: {
         per_page: 1,
       },

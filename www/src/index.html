@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>Food</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
       @layer utilities {
         .column-auto-fill {
@@ -17,27 +16,14 @@
       }
     </style>
   </head>
-  <body>
-    <h1 class="py-4 text-6xl font-bold text-center text-green-800">
-      Find recipe ideas
-    </h1>
-    <form
-      action="food-search"
-      class="flex justify-center flex-wrap py-16 test-xl gap-16"
-      method="get"
-    >
-      <input
-        class="border-4 border-green-600 rounded-lg bg-green-500 placeholder-green-900 px-4 py-1 hover:cursor-text"
-        name="word"
-        type="text"
-        value="Pasta"
-      />
-      <div
-        class="border-2 border-green-600 rounded-lg bg-green-500 px-4 py-1 mx-8 text-green-900"
-      >
+  <body class="homepage">
+    <h1>Find recipe ideas</h1>
+    <form action="food-search" method="get">
+      <input name="word" type="text" value="Pasta" />
+      <div class="selection">
         View :
         <select
-          class="border-2 border-green-400 bg-green-500 hover:cursor-cell text-green-900"
+          class="number_select"
           value="5"
           name="number_choose"
           id="search-bar"
@@ -49,25 +35,19 @@
           <option value="100">100</option>
         </select>
       </div>
-      <input
-        class="border-2 border-green-600 rounded-lg bg-green-500 px-4 py-1 hover:cursor-pointer text-green-900"
-        type="submit"
-      />
+      <input type="submit" />
     </form>
     <script type="text/javascript">
       document.getElementById("search-bar").value =
         "<?php echo $_POST['number_choose'];?>";
     </script>
 
-    <div class="grid column-auto-fill px-12 justify-center">
+    <div class="screen_choice">
       <!--<?php $numbers = $food["number"]; ?>
 
         @for ($i = 0; $i < $numbers; $i++)
         <?php $id_details=$food["results"][$i]["id"]; ?>-->
-      <a
-        class="food_link max-imag text-center p-1 border-4 border-green-600 transition-all rounded-lg hover:shadow-lg hover:shadow-green-600 overflow-hidden hover:scale-105"
-        href="details.html"
-      >
+      <a class="food_link" href="details.html">
         <img class="food_image" src="./images/Blackground.png" alt="t" />
         <legend class="food_legend"></legend>
       </a>
