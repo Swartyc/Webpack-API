@@ -3,22 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Food</title>
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .column-auto-fill {
-          grid-template-columns: repeat(auto-fill, 230px);
-          grid-gap: 32px;
-          padding-top: 64px;
-        }
-        .max-imag {
-          max-width: 230px;
-        }
-      }
-    </style>
   </head>
   <body class="homepage">
     <h1>Find recipe ideas</h1>
-    <form action="food-search" method="get">
+    <form method="get">
       <input name="word" type="text" value="Pasta" />
       <div class="selection">
         View :
