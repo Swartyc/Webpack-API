@@ -57,7 +57,7 @@ export class Food {
         num +
         "&query=" +
         word +
-        "&apiKey=4ab5c3e49cb746eb8dd35673e691d303",
+        "&apiKey=55f4f7870c864602936c39f8a7e3fafc",
       params: {
         per_page: 1,
       },

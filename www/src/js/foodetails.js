@@ -16,7 +16,10 @@ console.log(pages);
 //Parcours des différents tableau
 var ingredients = 0,
   equipements = 0,
-  instructions = 0;
+  instructions = 0,
+  numberofingredients = 0,
+  numberofequipments = 0,
+  numberofinstructions = 0;
 
 export class Foodetails {
   constructor() {
@@ -80,7 +83,7 @@ export class Foodetails {
       endpoint:
         "https://api.spoonacular.com/recipes/" +
         pages +
-        "/summary?apiKey=4ab5c3e49cb746eb8dd35673e691d303",
+        "/summary?apiKey=55f4f7870c864602936c39f8a7e3fafc",
     };
     $.ajaxSetup({ cache: false });
     $.getJSON(api_summarise.endpoint)
@@ -98,12 +101,13 @@ export class Foodetails {
       endpoint:
         "https://api.spoonacular.com/recipes/" +
         pages +
-        "/ingredientWidget.json?apiKey=4ab5c3e49cb746eb8dd35673e691d303",
+        "/ingredientWidget.json?apiKey=55f4f7870c864602936c39f8a7e3fafc",
     };
     $.ajaxSetup({ cache: false });
 
     $.getJSON(api_ingredient.endpoint)
       .then((response) => {
+        console.log("coucou");
         console.log(response);
         this.renderFoodingre(response);
       })
@@ -116,7 +120,7 @@ export class Foodetails {
       endpoint:
         "https://api.spoonacular.com/recipes/" +
         pages +
-        "/equipmentWidget.json?apiKey=4ab5c3e49cb746eb8dd35673e691d303",
+        "/equipmentWidget.json?apiKey=55f4f7870c864602936c39f8a7e3fafc",
     };
     $.ajaxSetup({ cache: false });
 
@@ -134,7 +138,7 @@ export class Foodetails {
       endpoint:
         "https://api.spoonacular.com/recipes/" +
         pages +
-        "/analyzedInstructions?apiKey=4ab5c3e49cb746eb8dd35673e691d303",
+        "/analyzedInstructions?apiKey=55f4f7870c864602936c39f8a7e3fafc",
     };
     $.ajaxSetup({ cache: false });
 
@@ -160,6 +164,8 @@ export class Foodetails {
 
   //Ingrédients
   renderFoodingre(food) {
+    numberofingredients = food.ingredients.length;
+    console.log("cingredients :" + numberofingredients);
     const ingrefood =
       "https://spoonacular.com/cdn/ingredients_250x250/" +
       food.ingredients[ingredients].image;
@@ -180,6 +186,8 @@ export class Foodetails {
 
   //Equipements
   renderFoodequip(food) {
+    numberofequipments = food.equipment.length;
+    console.log("cequipment :" + numberofequipments);
     const imgequip =
       "https://spoonacular.com/cdn/equipment_250x250/" +
       food.equipment[equipements].image;
@@ -188,7 +196,17 @@ export class Foodetails {
 
   //Instructions
   renderFoodinstru(food) {
+    numberofinstructions = food[0].steps.length;
+    console.log("cinstruction :" + numberofinstructions);
     const instruction = food[0].steps[instructions].step;
     this.$els.instru.text(instruction);
   }
+}
+function getter() {
+  var arrayofnum = [
+    numberofingredients,
+    numberofequipments,
+    numberofinstructions,
+  ];
+  console.log(arrayofnum);
 }
