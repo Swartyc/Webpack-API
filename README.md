@@ -1,4 +1,4 @@
-<h1 align="center">FoodAPI</h1>
+<h1 align="center">Webpack FoodAPI</h1>
 
 <h3><ins>Lancer l'API :</ins></h3>
 <ol>
