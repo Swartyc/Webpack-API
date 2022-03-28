@@ -1,5 +1,24 @@
 import $ from "jquery";
 
+/************************************************ Récupération d'un paramètre dans l'url et instanciation du résultat dans une variable ************************************************/
+function getParamByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return "";
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+var word = getParamByName("word");
+var num = getParamByName("number_choose");
+if (word == null || word == "") {
+  word = "pasta";
+}
+if (num == null || num == "" || num == 0) {
+  num = 5;
+}
+
 export class Food {
   constructor() {
     this.initEls();
@@ -31,9 +50,14 @@ export class Food {
   }
 
   getFood() {
+    console.log(word, num);
     const api = {
       endpoint:
-        "https://api.spoonacular.com/recipes/complexSearch?number=5&query=pasta&apiKey=4ab5c3e49cb746eb8dd35673e691d303",
+        "https://api.spoonacular.com/recipes/complexSearch?number=" +
+        num +
+        "&query=" +
+        word +
+        "&apiKey=4ab5c3e49cb746eb8dd35673e691d303",
       params: {
         per_page: 1,
       },
