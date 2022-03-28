@@ -5,6 +5,8 @@
     left: 1.5rem;
     width: 4rem;
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    background-color: transparent;
+    border: none;
 
     @keyframes pulse {
       0%,
@@ -40,8 +42,12 @@
   .sum_details {
     padding: 0 3rem;
     text-align: justify;
-    cursor: pointer;
     color: $color-600;
+    a {
+      text-decoration: none;
+      cursor: text;
+      color: $color-600;
+    }
   }
   .ingredientfood {
     table {
