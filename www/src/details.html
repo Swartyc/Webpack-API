@@ -39,13 +39,7 @@
     <h2>Summarise of this recipe :</h2>
     <p class="sum_details"></p>
     <div class="ingredientfood">
-      <script>
-        var numberof = getter();
-        console.log(numberof);
-        console.log("coucoucoucou : :" + numberof);
-      </script>
-      <!--<?php $numbers = count($food["ingredients"]); ?>-->
-      <table>
+      <table class="theingredient">
         <tr>
           <th colspan="4">Ingredients</th>
         </tr>
@@ -63,28 +57,14 @@
             <img class="ingredient_details" src="./images/Blackground.png" />
           </td>
           <td class="ingredientname_details"></td>
-          <td class="ingredientmetric_details">
-            <span></span>
-          </td>
-          <td class="ingredientus_details">
-            <span></span>
-          </td>
+          <td class="ingredientmetric_details"></td>
+          <td class="ingredientus_details"></td>
         </tr>
         <!--@endfor-->
       </table>
-      <!--<?php $numbers_equip = count($equipment["equipment"]); ?>-->
       <h2>Equipments :</h2>
-      <div class="equipmentfood">
-        <!--@for ($i = 0; $i < $numbers_equip; $i++)-->
-        <img class="equipmentimg_details" src="./images/Blackground.png" />
-        <!--@endfor-->
-      </div>
+      <div class="equipmentfood"></div>
     </div>
-    <!--<?php $numbers_instru = count($instruction[0]["steps"]); ?>-->
-    <ol>
-      <!--@for ($i = 0; $i < $numbers_instru; $i++)-->
-      <li class="instructions_details"></li>
-      <!--@endfor-->
-    </ol>
+    <ol class="instructions_details"></ol>
   </body>
 </html>

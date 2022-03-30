@@ -7,7 +7,7 @@
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     background-color: transparent;
     border: none;
-
+    cursor: pointer;
     @keyframes pulse {
       0%,
       100% {
@@ -70,6 +70,7 @@
           padding: 0.5rem;
           color: $color-600;
           text-transform: capitalize;
+          text-align: center;
           &.subtitle {
             padding: 0;
             text-align: center;

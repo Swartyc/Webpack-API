@@ -37,13 +37,10 @@ export class Foodetails {
       sumfood: document.querySelector(".sum_details"),
 
       //Ingrédients
-      ingfood: document.querySelector(".ingredient_details"),
-      ingname: document.querySelector(".ingredientname_details"),
-      ingmetric: document.querySelector(".ingredientmetric_details"),
-      ingus: document.querySelector(".ingredientus_details"),
+      ingre: document.querySelector(".theingredient"),
 
       //Equipements
-      equipimg: document.querySelector(".equipmentimg_details"),
+      equipimg: document.querySelector(".equipmentfood"),
 
       //Instructions
       instru: document.querySelector(".instructions_details"),
@@ -56,13 +53,10 @@ export class Foodetails {
       sumfood: $(".sum_details"),
 
       //Ingrédients
-      ingfood: document.querySelector(".ingredient_details"),
-      ingname: $(".ingredientname_details"),
-      ingmetric: $(".ingredientmetric_details"),
-      ingus: $(".ingredientus_details"),
+      ingre: $(".theingredient"),
 
       //Equipements
-      equipimg: document.querySelector(".equipmentimg_details"),
+      equipimg: $(".equipmentfood"),
 
       //Instructions
       instru: $(".instructions_details"),
@@ -83,13 +77,11 @@ export class Foodetails {
       endpoint:
         "https://api.spoonacular.com/recipes/" +
         pages +
-        "/summary?apiKey=55f4f7870c864602936c39f8a7e3fafc",
+        "/summary?apiKey=4ab5c3e49cb746eb8dd35673e691d303",
     };
     $.ajaxSetup({ cache: false });
     $.getJSON(api_summarise.endpoint)
       .then((response) => {
-        console.log(response["title"]);
-        console.log(response["summary"]);
         this.renderFoodsum(response);
       })
       .catch((e) => {
@@ -101,14 +93,12 @@ export class Foodetails {
       endpoint:
         "https://api.spoonacular.com/recipes/" +
         pages +
-        "/ingredientWidget.json?apiKey=55f4f7870c864602936c39f8a7e3fafc",
+        "/ingredientWidget.json?apiKey=4ab5c3e49cb746eb8dd35673e691d303",
     };
     $.ajaxSetup({ cache: false });
 
     $.getJSON(api_ingredient.endpoint)
       .then((response) => {
-        console.log("coucou");
-        console.log(response);
         this.renderFoodingre(response);
       })
       .catch((e) => {
@@ -120,13 +110,12 @@ export class Foodetails {
       endpoint:
         "https://api.spoonacular.com/recipes/" +
         pages +
-        "/equipmentWidget.json?apiKey=55f4f7870c864602936c39f8a7e3fafc",
+        "/equipmentWidget.json?apiKey=4ab5c3e49cb746eb8dd35673e691d303",
     };
     $.ajaxSetup({ cache: false });
 
     $.getJSON(api_equipment.endpoint)
       .then((response) => {
-        console.log(response);
         this.renderFoodequip(response);
       })
       .catch((e) => {
@@ -138,13 +127,12 @@ export class Foodetails {
       endpoint:
         "https://api.spoonacular.com/recipes/" +
         pages +
-        "/analyzedInstructions?apiKey=55f4f7870c864602936c39f8a7e3fafc",
+        "/analyzedInstructions?apiKey=4ab5c3e49cb746eb8dd35673e691d303",
     };
     $.ajaxSetup({ cache: false });
 
     $.getJSON(api_instructions.endpoint)
       .then((response) => {
-        console.log(response);
         this.renderFoodinstru(response);
       })
       .catch((e) => {
@@ -165,48 +153,84 @@ export class Foodetails {
   //Ingrédients
   renderFoodingre(food) {
     numberofingredients = food.ingredients.length;
-    console.log("cingredients :" + numberofingredients);
-    const ingrefood =
+    console.log("Nombre d'ingredients : " + numberofingredients);
+    var theingre = [];
+    var contentimgingre =
       "https://spoonacular.com/cdn/ingredients_250x250/" +
       food.ingredients[ingredients].image;
-    const namefood = food.ingredients[ingredients].name;
-    const metricfood =
+    theingre[0] =
+      '<tr><th colspan="4">Ingredients</th></tr><tr><td class="subtitle" colspan="2" rowspan="2">Name</td><td class="subtitle" colspan="2">Values</td></tr><tr><td class="measurement">Metric</td><td class="measurement">US</td></tr><tr><td><img class="ingredient_details" src="' +
+      contentimgingre +
+      '" /></td><td class="ingredientname_details">' +
+      food.ingredients[ingredients].name +
+      '</td><td class="ingredientmetric_details">' +
       food.ingredients[ingredients].amount.metric.value +
       " " +
-      food.ingredients[ingredients].amount.metric.unit;
-    const usfood =
+      food.ingredients[ingredients].amount.metric.unit +
+      '</td><td class="ingredientus_details">' +
       food.ingredients[ingredients].amount.us.value +
       " " +
-      food.ingredients[ingredients].amount.us.unit;
-    this.$els.ingfood.setAttribute("src", ingrefood);
-    this.$els.ingname.text(namefood);
-    this.$els.ingmetric.text(metricfood);
-    this.$els.ingus.text(usfood);
+      food.ingredients[ingredients].amount.us.unit +
+      "</td></tr>";
+    for (ingredients = 1; ingredients < numberofingredients; ingredients++) {
+      contentimgingre =
+        "https://spoonacular.com/cdn/ingredients_250x250/" +
+        food.ingredients[ingredients].image;
+      theingre.push(
+        '<tr><td><img class="ingredient_details" src="' +
+          contentimgingre +
+          '" /></td><td class="ingredientname_details">' +
+          food.ingredients[ingredients].name +
+          '</td><td class="ingredientmetric_details">' +
+          food.ingredients[ingredients].amount.metric.value +
+          " " +
+          food.ingredients[ingredients].amount.metric.unit +
+          '</td><td class="ingredientus_details">' +
+          food.ingredients[ingredients].amount.us.value +
+          " " +
+          food.ingredients[ingredients].amount.us.unit +
+          "</td></tr>"
+      );
+    }
+    this.$els.ingre.html(theingre);
   }
 
   //Equipements
   renderFoodequip(food) {
     numberofequipments = food.equipment.length;
-    console.log("cequipment :" + numberofequipments);
-    const imgequip =
+    console.log("Nombre d'équipment : " + numberofequipments);
+    var imgequip = [];
+    var contentimgequip =
       "https://spoonacular.com/cdn/equipment_250x250/" +
       food.equipment[equipements].image;
-    this.$els.equipimg.setAttribute("src", imgequip);
+    imgequip[0] =
+      '<img class="equipmentimg_details" src="' + contentimgequip + '" />';
+    for (equipements = 1; equipements < numberofequipments; equipements++) {
+      contentimgequip =
+        "https://spoonacular.com/cdn/equipment_250x250/" +
+        food.equipment[equipements].image;
+      imgequip.push(
+        '<img class="equipmentimg_details" src="' + contentimgequip + '" />'
+      );
+    }
+
+    this.$els.equipimg.html(imgequip);
   }
 
   //Instructions
   renderFoodinstru(food) {
     numberofinstructions = food[0].steps.length;
-    console.log("cinstruction :" + numberofinstructions);
-    const instruction = food[0].steps[instructions].step;
-    this.$els.instru.text(instruction);
+    console.log("Nombre d'instructions : " + numberofinstructions);
+    var instruction = [];
+    instruction[instructions] =
+      "<li>" + instruction + food[0].steps[instructions].step + "</li>";
+    for (
+      instructions = 1;
+      instructions < numberofinstructions;
+      instructions++
+    ) {
+      instruction.push("<li>" + food[0].steps[instructions].step + "</li>");
+    }
+    this.$els.instru.html(instruction);
   }
-}
-function getter() {
-  var arrayofnum = [
-    numberofingredients,
-    numberofequipments,
-    numberofinstructions,
-  ];
-  console.log(arrayofnum);
 }

@@ -28,17 +28,13 @@ export class Food {
   initEls() {
     // Éléments non-jQuery
     this.els = {
-      Legend: document.querySelector(".food_legend"),
-      Image: document.querySelector(".food_image"),
-      Link: document.querySelector(".food_link"),
+      Theimage: document.querySelector(".screen_choice"),
       Container: document.querySelector("js-container"),
     };
 
     // Éléments jQuery
     this.$els = {
-      Legend: $(".food_legend"),
-      Image: document.querySelector(".food_image"),
-      Link: document.querySelector(".food_link"),
+      Theimage: $(".screen_choice"),
       Container: $(".js-container"),
     };
 
@@ -50,14 +46,14 @@ export class Food {
   }
 
   getFood() {
-    console.log(word, num);
+    console.log("Nom entrée : " + word + ", Nombre de vue : " + num);
     const api = {
       endpoint:
         "https://api.spoonacular.com/recipes/complexSearch?number=" +
         num +
         "&query=" +
         word +
-        "&apiKey=55f4f7870c864602936c39f8a7e3fafc",
+        "&apiKey=4ab5c3e49cb746eb8dd35673e691d303",
       params: {
         per_page: 1,
       },
@@ -65,7 +61,6 @@ export class Food {
     $.ajaxSetup({ cache: false });
     $.getJSON(api.endpoint)
       .then((response) => {
-        console.log(response["results"][0]["title"]);
         this.renderFood(response);
       })
       .catch((e) => {
@@ -73,15 +68,31 @@ export class Food {
       });
   }
   renderFood(food) {
-    const foodLegend = food.results[0].title;
-    const foodimgsrc = food.results[0].image;
-    const foodimgalt = food.results[0].title + "_image";
-    const foodlink = "details.html?id=" + food.results[0].id;
-    console.log(foodlink);
-    this.$els.Legend.text(foodLegend);
-    this.$els.Image.setAttribute("src", foodimgsrc);
-    this.$els.Image.setAttribute("alt", foodimgalt);
-    this.$els.Link.setAttribute("href", foodlink);
+    var imglegendalthref = [];
+    imglegendalthref[0] =
+      '<a class="food_link" href="details.html?id=' +
+      food.results[0].id +
+      '"><img class="food_image" src="' +
+      food.results[0].image +
+      '" alt="' +
+      food.results[0].title +
+      '_image" /><legend class="food_legend">' +
+      food.results[0].title +
+      "</legend></a>";
+    for (var i = 1; i < num; i++) {
+      imglegendalthref.push(
+        '<a class="food_link" href="details.html?id=' +
+          food.results[i].id +
+          '"><img class="food_image" src="' +
+          food.results[i].image +
+          '" alt="' +
+          food.results[i].title +
+          '_image" /><legend class="food_legend">' +
+          food.results[i].title +
+          "</legend></a>"
+      );
+    }
+    this.$els.Theimage.html(imglegendalthref);
     this.$els.Container.addClass("is-ready");
   }
 }
